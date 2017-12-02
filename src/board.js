@@ -1,34 +1,5 @@
-// game class
-class Game {
-    constructor(numberOfRows, numberOfColumns, numberOfBombs) {
-        this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
-    }
-    
-    //
-    playMove(rowIndex, columnIndex) {
-        // flip tiles first
-        this._board.flipTile(rowIndex, columnIndex);
-        
-        // if flipped tile has a bomb, game is over
-        if(this._board.playerBoard[rowIndex][columnIndex] === 'B') {
-            console.log('Game is Over!');
-            this._board.print();
-        }
-        
-        if(!this._board.hasSafeTiles){
-                console.log('You have won!');
-            }
-            else {
-                console.log('Current Board: ');
-                this._board.print();
-            }
-        }
-        
-    }
-
-
-// board class
-class Board {
+// export board class
+export class Board {
     constructor(numberOfRows, numberOfColumns, numberOfBombs) {
         this._numberOfBombs = numberOfBombs;
         this._numberOfTiles = numberOfRows * numberOfColumns;
@@ -159,11 +130,3 @@ hasSafeTiles() {
     return board;
 }
 }
-
-
-
-// instantiate a new Game with 3x3 board, and 3 bombs
-const g = new Game(3, 3, 3);
-// play a move on g, with coordinates of your choice
-g.playMove(0,1);
-g.playMove(1,1);
